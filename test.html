@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MIDIjs - Home</title>
+		<style type="text/css">
+			.source_code { background-color: #bbbbff; color:black }
+			.player { background-color: #bbbbff; color:black; border: 2px solid grey;}
+		</style>
+
+<script type='text/javascript' src='lib/midi.js'></script>
+
+</head>
+	<body>
+		<h1 class="player">
+			MIDIjs - Home<br />
+			<span style="font-size:14px;">The 100% JavaScript MIDI Player using W3C Web Audio</span></h1>
+		<p>
+			MIDIjs is a MIDI file player for web pages. It&#39;s easy to use and works with all modern browsers on Windows, MacOS, Android and iOS. MIDIjs uses the W3C Web Audio API to produce audio output. This is a 100% JavaScript solution, with no need for plugins or extensions.</p>
+		<p>
+			For browsers not not yet supporting W3C Web Audio API the MIDIjs library falls back to conventional plugin-based methods to play MIDI files. However, some of the advanced features of MIDIjs are not supported or even cannot be supported in fallback mode.</p>
+		<p>
+			<strong>Advantages of MIDIjs</strong></p>
+		<ul>
+			<li>
+				A single solution for all browsers and platforms</li>
+			<li>
+				Independent of plugins or extensions. No need for users to install anything</li>
+			<li>
+				Free of charge to anyone</li>
+		</ul>
+
+		MIDIjs Premium Support: You need specific service levels and support with guaranteed response times?
+		Please contact us at <a href="mailto:sales@scorio.com">sales@scorio.com</a>
+
+		<p name="example">
+			<strong>Example</strong></p>
+		<div class="player">
+			<p>
+			<a href="#example" onclick="MIDIjs.play('./midi/alan_jackson_dont_rock_the_jukebox.midi');">Play Rock the Jukebox (Alan Jackson)</a>&nbsp; &nbsp;
+			<a href="#example" onclick="MIDIjs.play('/midi/bobby_sharp_unchain_my_heart.mid');">Play Unchain my Heart (Bobby Sharp)</a>&nbsp;  &nbsp;
+			<a href="#example" onclick="MIDIjs.play('/midi/hinematov.mid');">Play Hinematov (Reiner Oberbeck)</a>&nbsp; &nbsp;
+			<a href="#example" onclick="MIDIjs.play('/midi/barbara_streisand_woman_in_love.mid');">Play Woman in Love (Barbara Streisand)</a></p>
+			<p>
+			<a href="#" onclick="MIDIjs.stop();">Stop Playback</a></p>
+
+			<div style="font-size: 71%;font-size: 71%">
+				MIDIjs status: <span id="MIDIjs.message" style="color: green">Initializing ...</span>
+				<div>
+					MIDIjs audio time (s): <span id="MIDIjs.audio_time" style="color: green">-</span></div>
+			</div>
+		</div>
+<script type='text/javascript'>
+  var message_span = document.getElementById('MIDIjs.message');
+  message_span.innerHTML = MIDIjs.get_audio_status();
+
+  MIDIjs.message_callback = display_status;
+  function display_status(message) {
+     message_span.innerHTML = message;
+  };
+
+  var time_span = document.getElementById('MIDIjs.audio_time');
+  MIDIjs.player_callback = display_time;
+  function display_time(player_event) {
+     time_span.innerHTML = player_event.time;
+  };
+</script>		<p>
+			<strong>Include MIDIjs into your website</strong></p>
+		<p>
+			Using MIDIjs to play MIDI files on your web site is as easy as this. Lets assume you have a MIDI file &quot;hinematov.mid&quot; on your website in a directory named &quot;midi&quot;.</p>
+		<p>
+			There are just two steps to let it play:</p>
+		<p>
+			1. Include the following script statement into your page&#39;s header</p>
+		<div class="source_code">
+			<div class="source_code">
+				<p style="margin-left: 40px;">
+					&lt;script type=&#39;text/javascript&#39; src=&#39;//www.midijs.net/lib/midi.js&#39;&gt;&lt;/script&gt;</p>
+			</div>
+		</div>
+		<p>
+			2. Create a link to play the file</p>
+		<div class="source_code">
+			<p style="margin-left: 40px;">
+				&nbsp;&lt;a href=&quot;#&quot; onClick=&quot;MIDIjs.play(&#39;midi/hinematov.mid&#39;);&quot;&gt;Play hinematov.mid&lt;/a&gt;</p>
+		</div>
+		<p>
+			Optinal: Provide a link to stop playback at any time</p>
+		<div class="source_code">
+			<p style="margin-left: 40px;">
+				&nbsp;&lt;a href=&quot;#&quot; onClick=&quot;MIDIjs.stop();&quot;&gt;Stop MIDI Playback&lt;/a&gt;</p>
+		</div>
+		<p>
+			As you note, &nbsp;the script will provide the JavaScript object MIDIjs with functions MIDIjs.play(url) and MIDIjs.stop() to play MIDI files and to stop playback at any time.</p>
+		<p>
+			<a href="midijs_api.html">More Detailed MIDIjs API Description</a></p>
+ <p>
+			<strong>Browsers where MDIjs works with Web Audio API</strong></p>
+		<p>
+			The following browsers have been positively tested. If version x of a browser works you may assume, that version x+1 also works. These are the positive cases. However, I did not make a comprehensive test of all browsers and operating systems that exist.</p>
+		<p style="margin-left: 40px;">
+			Microsoft Windows</p>
+		<ul style="margin-left: 40px;">
+			<li>
+				Chrome 30, 31, 54, 71</li>
+			<li>
+				Firefox 24 (fallback)</li>
+			<li>
+				Firefox 25, 26, 50</li>
+			<li>
+				Internet Explorer 7, 8, 9, 11 (fallback)</li>
+			<li>
+				Microsoft Edge 38</li>
+		</ul>
+		<p style="margin-left: 40px;">
+			MacOS</p>
+		<ul>
+			<li style="margin-left: 40px;">
+				Safari 5.1.10 (fallback)</li>
+			<li style="margin-left: 40px;">
+				Safari 6.2.8</li>
+			<li style="margin-left: 40px;">
+				Safari 10.0.2</li>
+			<li style="margin-left: 40px;">
+				Google Chrome 56</li>
+			<li style="margin-left: 40px;">
+				Firefox 50</li>
+		</ul>
+		<p style="margin-left: 40px;">
+			Linux</p>
+		<ul>
+			<li style="margin-left: 40px;">
+				Firefox 25 on Ubuntu 13</li>
+			<li style="margin-left: 40px;">
+				Firefox 50 on Ubuntu 16</li>
+			<li style="margin-left: 40px;">
+				Chromium 30 on Ubuntu 13</li>
+			<li style="margin-left: 40px;">
+				Chromium 53 on Ubuntu 16</li>
+		</ul>
+		<p style="margin-left: 40px;">
+			Android</p>
+		<ul>
+			<li style="margin-left: 40px;">
+				Google Chrome 31 on Android 4.1.1</li>
+			<li style="margin-left: 40px;">
+				Google Chrome 31 (Standard Browser) on Android 4.4</li>
+			<li style="margin-left: 40px;">
+				Google Chrome 32 (Standard Browser) on Android 4.4</li>
+			<li style="margin-left: 40px;">
+				Mozilla Firefox 26.0.1 on Android 4.1.1</li>
+		</ul>
+		<blockquote>
+			<p>
+				iOS</p>
+			<ul>
+				<li>
+					Safari on iPhone and iPad on iOS 7</li>
+				<li>
+					Google Chrome 31 on iOS 7</li>
+			</ul>
+		</blockquote>
+		<p style="margin-left: 40px;">
+			&nbsp;</p>
+		<p>
+			The following browsers are not supported by MIDIjs. If version x does not work you may assume, that version x-1 also does not work.</p>
+		<p style="margin-left: 40px;">
+			Windows</p>
+		<ul style="margin-left: 40px;">
+			<li>
+				Safari 5.1.7</li>
+		</ul>
+		<p style="margin-left: 40px;">
+			Android</p>
+		<ul>
+			<li style="margin-left: 40px;">
+				Standard browser on Android version 4.3 and previous versions</li>
+		</ul>
+		<ul>
+			<li style="margin-left: 40px;">
+				Chrome 26 on Android 4.1.2 on Galaxy S3, probably a Samsung specific Problem</li>
+		</ul>
+		<p style="margin-left: 40px;">
+			MacOS</p>
+
+		<ul>
+			<li style="margin-left: 40px;">
+			Firefox 7.0.1</li>
+		</ul>
+		<p style="margin-left: 40px;">
+			iOS</p>
+		<ul>
+			<li style="margin-left: 40px;">
+			Safari on iOS 6, due to very limited Web Audio Api support and no available fallback</li>
+		</ul>
+		<hr />
+		<p style="text-align: center;">
+			<a href="midijs_imprint.html">Imprint</a></p>
+	</body>
+</html>
